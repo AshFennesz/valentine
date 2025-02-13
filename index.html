@@ -59,6 +59,7 @@
             background-color: #ff4d4d;
             color: white;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         #yes:hover {
             transform: scale(1.1);
@@ -105,7 +106,7 @@
     </div>
     <div class="btn-container">
         <button id="yes" class="btn" onclick="playMusic(); spawnHearts(); showGif(); hideNoButton();">Yes</button>
-        <button id="no" class="btn" onmouseover="moveButton()">No</button>
+        <button id="no" class="btn" onmouseover="moveButton()" onclick="growYesButton()">No</button>
     </div>
 </div>
 
@@ -114,8 +115,8 @@
 <script>
 function playMusic() {
     let music = document.getElementById("bgMusic");
-    music.loop = true;   // เล่นซ้ำ
-    music.volume = 0.7;  // ตั้งค่าเสียงให้ไม่ดังเกินไป
+    music.loop = true;   
+    music.volume = 0.7;  
     music.play();
 }
 
@@ -159,6 +160,13 @@ function showGif() {
 
 function hideNoButton() {
     document.getElementById("no").style.display = "none";
+}
+
+function growYesButton() {
+    let yesButton = document.getElementById("yes");
+    let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (currentSize + 5) + "px";
+    yesButton.style.padding = (parseFloat(yesButton.style.padding || "12") + 5) + "px";
 }
 </script>
 
