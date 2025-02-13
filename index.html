@@ -74,16 +74,6 @@
             transform: scale(1.1);
             background-color: #999;
         }
-        #stopMusic {
-            margin-top: 20px;
-            background-color: #444;
-            color: white;
-            font-size: 1rem;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: none;
-        }
         .heart {
             position: absolute;
             color: red;
@@ -114,10 +104,9 @@
         <img src="moti-hearts.gif" alt="Happy Gif">
     </div>
     <div class="btn-container">
-        <button id="yes" class="btn" onclick="playMusic(); spawnHearts(); showGif();">Yes</button>
-        <button id="no" class="btn" onmouseover="moveButton()" onclick="showSadEmoji()">No</button>
+        <button id="yes" class="btn" onclick="playMusic(); spawnHearts(); showGif(); hideNoButton();">Yes</button>
+        <button id="no" class="btn" onmouseover="moveButton()">No</button>
     </div>
-    <button id="stopMusic" onclick="stopMusic()">Stop Music</button>
 </div>
 
 <audio id="bgMusic" src="ลูกอม-HOOK.mp3" preload="auto"></audio>
@@ -128,9 +117,6 @@ function playMusic() {
     music.loop = true;   // เล่นซ้ำ
     music.volume = 0.7;  // ตั้งค่าเสียงให้ไม่ดังเกินไป
     music.play();
-
-    // แสดงปุ่ม Stop Music
-    document.getElementById("stopMusic").style.display = "inline-block";
 }
 
 function moveButton() {
@@ -169,6 +155,10 @@ function spawnHearts() {
 
 function showGif() {
     document.getElementById("gifContainer").style.display = "block";
+}
+
+function hideNoButton() {
+    document.getElementById("no").style.display = "none";
 }
 </script>
 
